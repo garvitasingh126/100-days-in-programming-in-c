@@ -1,0 +1,43 @@
+/*Q37. Write a program to find the LCM of two numbers.*/
+#include<stdio.h>
+int main ()
+{
+    int a, b, lcm;
+    printf("Enter the value of a");
+    scanf("%d", &a);
+    printf("Enter the value of b");
+    scanf("%d", &b);
+    lcm = (a > b) ? a : b;
+
+    while (1)
+    {
+        if (lcm % a == 0 && lcm % b == 0)
+        {
+            printf("%d", lcm);
+            break;
+        }
+        lcm++;
+    }
+    return 0;
+}
+
+/*Write a program to find the sum of digits of a number.*/
+#include <stdio.h>
+
+int main()
+{
+    int n, digit, sum = 0;
+
+    scanf("%d", &n);
+
+    while (n > 0)
+    {
+        digit = n % 10;
+        sum = sum + digit;
+        n = n / 10;
+    }
+
+    printf("%d", sum);
+
+    return 0;
+}
