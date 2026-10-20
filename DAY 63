@@ -1,0 +1,30 @@
+/*Q113.Write a program to take an integer array arr and an integer k as inputs. The task is to find the kth 
+smallest element in the array. Print the kth smallest element as output.*/
+
+#include <stdio.h>
+int main() {
+    int n, a[1000], k, i, j, min, temp;
+
+    scanf("%d", &n);
+    for (i = 0; i < n; i++) scanf("%d", &a[i]);
+    scanf("%d", &k);
+
+    if (k < 1 || k > n) {
+        printf("-1");
+        return 0;
+    }
+
+    for (i = 0; i < n - 1; i++) {
+        min = i;
+
+        for (j = i + 1; j < n; j++)
+            if (a[j] < a[min]) min = j;
+
+        temp = a[i];
+        a[i] = a[min];
+        a[min] = temp;
+    }
+
+    printf("%d", a[k - 1]);
+    return 0;
+}
