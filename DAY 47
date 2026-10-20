@@ -1,0 +1,62 @@
+/*Q93.Check if two strings are anagrams of each other.*/
+#include <stdio.h>
+int main() {
+    char a[200], b[200];
+    int freq[256] = {0}, i = 0;
+
+    scanf("%199s %199s", a, b);
+
+    while (a[i] != '\0') {
+        freq[(unsigned char)a[i]]++;
+        i++;
+    }
+
+    i = 0;
+    while (b[i] != '\0') {
+        freq[(unsigned char)b[i]]--;
+        i++;
+    }
+
+    for (i = 0; i < 256; i++) {
+        if (freq[i] != 0) {
+            printf("Not anagrams");
+            return 0;
+        }
+    }
+
+    printf("Anagrams");
+    return 0;
+}
+
+/*Q94.Find the longest word in a sentence.*/
+#include <stdio.h>
+int main() {
+    char str[500], word[500], longest[500];
+    int i = 0, j = 0, max = 0;
+
+    fgets(str, sizeof(str), stdin);
+
+    while (1) {
+        if (str[i] != ' ' && str[i] != '\n' &&
+            str[i] != '\0' && str[i] != '\t') {
+            word[j++] = str[i];
+        } else {
+            word[j] = '\0';
+
+            if (j > max) {
+                max = j;
+                for (int k = 0; k <= j; k++)
+                    longest[k] = word[k];
+            }
+
+            j = 0;
+
+            if (str[i] == '\0' || str[i] == '\n')
+                break;
+        }
+        i++;
+    }
+
+    printf("%s", longest);
+    return 0;
+}
