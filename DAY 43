@@ -1,0 +1,57 @@
+/*Q85.Reverse a string.*/
+
+#include <stdio.h>
+int main() {
+    char str[100], temp;
+    int i = 0, j;
+
+    fgets(str, sizeof(str), stdin);
+
+    while (str[i] != '\0' && str[i] != '\n') {
+        i++;
+    }
+
+    j = i - 1;
+
+    for (i = 0; i < j; i++, j--) {
+        temp = str[i];
+        str[i] = str[j];
+        str[j] = temp;
+    }
+
+    str[(i + j + 1) / 2] = str[(i + j + 1) / 2];
+
+    printf("%s", str);
+
+    return 0;
+}
+
+/*Q86.Check if a string is a palindrome.*/
+#include<stdio.h>
+int main() {
+    char str[100];
+    int i = 0, j, palindrome = 1;
+
+    fgets(str, sizeof(str), stdin);
+
+    while (str[i] != '\0' && str[i] != '\n') {
+        i++;
+    }
+
+    j = i - 1;
+
+    for (i = 0; i < j; i++, j--) {
+        if (str[i] != str[j]) {
+            palindrome = 0;
+            break;
+        }
+    }
+
+    if (palindrome == 1) {
+        printf("Palindrome");
+    } else {
+        printf("Not Palindrome");
+    }
+
+    return 0;
+}
